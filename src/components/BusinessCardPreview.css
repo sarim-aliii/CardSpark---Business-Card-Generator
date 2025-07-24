@@ -1,0 +1,398 @@
+.preview-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    padding: 10px;
+    background-color: #e8e8e8;
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.brand-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.business-card {
+    width: 400px;
+    height: 225px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #f0f0f0;
+}
+
+.name-section {
+    flex-grow: 1;
+}
+
+.name {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.title, .company {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-body {
+    text-align: right;
+}
+
+.contact-info {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.contact-info a {
+    color: inherit; 
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+
+/* BASE STYLES (Common to all cards) */
+.business-card {
+    width: 400px;
+    height: 225px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    transition: all 0.3s ease-in-out; /* Smooth transition between templates */
+}
+
+/* MODERN TEMPLATE */
+.business-card.modern {
+    flex-direction: column;
+    justify-content: space-between;
+}
+.business-card.modern .card-header { display: flex; align-items: center; }
+.business-card.modern .logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-right: 15px; }
+.business-card.modern .name { font-size: 1.75rem; font-weight: 700; color: #000; margin: 0; }
+.business-card.modern .title, .business-card.modern .company { margin: 0; font-size: 1rem; color: #555; }
+.business-card.modern .card-body { text-align: right; }
+.business-card.modern .contact-info { margin: 4px 0; font-size: 0.9rem; }
+
+/* CLASSIC TEMPLATE */
+.business-card.classic {
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+.business-card.classic .card-header { display: flex; flex-direction: column; align-items: center; }
+.business-card.classic .logo { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; margin-bottom: 10px; }
+.business-card.classic .name { font-family: 'Georgia', serif; font-size: 2rem; }
+.business-card.classic .title, .business-card.classic .company { color: #444; }
+.business-card.classic .card-body { margin-top: 15px; }
+
+/* MINIMALIST TEMPLATE */
+.business-card.minimalist {
+    flex-direction: row; /* Side-by-side layout */
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.business-card.minimalist .card-header { flex-direction: column; align-items: flex-start; }
+.business-card.minimalist .logo { display: none; } /* No logo for a minimal look */
+.business-card.minimalist .name { font-size: 2.2rem; font-weight: 400; letter-spacing: 1px; }
+.business-card.minimalist .title, .business-card.minimalist .company { font-size: 0.9rem; color: #666; }
+.business-card.minimalist .card-body { text-align: right; padding-top: 5px; }
+.business-card.minimalist .contact-info { font-size: 0.8rem; }
+
+
+/* CORPORATE TEMPLATE */
+.business-card.corporate {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+    border-left: 8px solid #4263eb;
+}
+.business-card.corporate .card-header { align-items: center; }
+.business-card.corporate .logo { display: none; } /* Often, corporate designs are typographic */
+.business-card.corporate .name { font-size: 2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.business-card.corporate .title { color: #6c757d; font-weight: 500; }
+.business-card.corporate .company { display: none; } 
+.business-card.corporate .card-body { text-align: left; margin-top: 20px; }
+
+
+/* CREATIVE TEMPLATE */
+.business-card.creative {
+    position: relative; /* Needed for absolute positioning of children */
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    overflow: hidden; 
+}
+.business-card.creative .card-header {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+.business-card.creative .logo {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+.business-card.creative .name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #c850c0; }
+.business-card.creative .title, .business-card.creative .company { display: none; }
+.business-card.creative .card-body {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+
+/* VERTICAL TEMPLATE */
+/* CRITICAL: We swap the width and height for a portrait layout */
+.business-card.vertical {
+    width: 225px;
+    height: 400px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.business-card.vertical .card-header { flex-direction: column; align-items: center; }
+.business-card.vertical .logo { margin: 20px 0; }
+.business-card.vertical .name-section { margin-bottom: 30px; }
+.business-card.vertical .card-body { text-align: center; }
+
+
+/* ONYX (DARK MODE) TEMPLATE */
+.business-card.onyx {
+    background-color: #1a202c;
+    color: #e0e0e0; 
+}
+.business-card.onyx .name { color: #ffffff; } 
+.business-card.onyx .title, .business-card.onyx .company { color: #a0aec0; } 
+.business-card.onyx .logo { border: 2px solid #4a5568; }
+.business-card.onyx .card-body { text-align: right; }
+.business-card.onyx .contact-info { color: #e0e0e0; }
+
+/* LUXE TEMPLATE (Elegant & Premium) */
+.business-card.luxe {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    background-color: #fdfdfd;
+}
+.business-card.luxe .logo { display: none; } /* This design is typography-focused */
+.business-card.luxe .name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #c09a58;
+    margin-bottom: 5px;
+}
+.business-card.luxe .title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.7rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+.business-card.luxe .company { display: none; }
+.business-card.luxe .card-body { border-top: 1px solid #eee; padding-top: 15px; }
+
+
+/* GEO-STRIPE TEMPLATE (Geometric & Clean) */
+.business-card.geo-stripe {
+    position: relative;
+    background: linear-gradient(135deg, #4263eb 35%, #ffffff 35.1%);
+}
+.business-card.geo-stripe .card-header { position: absolute; top: 20px; left: 20px; }
+.business-card.geo-stripe .name { color: #000; }
+.business-card.geo-stripe .title, .business-card.geo-stripe .company { color: #333; }
+.business-card.geo-stripe .card-body {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+}
+.business-card.geo-stripe .contact-info { color: #ffffff; font-weight: 500; }
+
+
+/* GLASSMORPHIC TEMPLATE (Frosted Glass Effect) */
+/* For full effect, set a background image on .preview-container */
+.business-card.glassmorphic {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #212529;
+}
+.business-card.glassmorphic .name { color: #000; }
+.business-card.glassmorphic .logo { border: 2px solid rgba(255, 255, 255, 0.5); }
+.business-card.glassmorphic .contact-info { font-weight: 500; }
+
+
+/* BOLD-BLOCK TEMPLATE (Strong & Confident)*/
+.business-card.bold-block {
+    flex-direction: row;
+    padding: 0;
+    background: linear-gradient(to right, #1a202c 50%, #ffffff 50%);
+}
+.business-card.bold-block .card-header {
+    width: 50%;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.business-card.bold-block .name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+.business-card.bold-block .title { color: #a0aec0; }
+.business-card.bold-block .logo, .business-card.bold-block .company { display: none; }
+.business-card.bold-block .card-body {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px; 
+    font-size: 1.4rem;
+}
+
+/* Align icons to the right on templates where text is right-aligned */
+.business-card.modern .social-links,
+.business-card.minimalist .social-links,
+.business-card.creative .social-links,
+.business-card.onyx .social-links {
+    justify-content: flex-end;
+}
+
+/* Align icons to the center on centered templates */
+.business-card.classic .social-links,
+.business-card.vertical .social-links,
+.business-card.luxe .social-links {
+    justify-content: center;
+}
+
+/* Align icons to the left on left-aligned templates */
+.business-card.corporate .social-links,
+.business-card.bold-block .social-links {
+    justify-content: flex-start;
+}
+
+/* Style the links themselves */
+.social-links a {
+    color: #888; 
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+    color: #4263eb; 
+    transform: scale(1.1); 
+}
+
+/* Special color for dark mode template */
+.business-card.onyx .social-links a {
+    color: #a0aec0;
+}
+.business-card.onyx .social-links a:hover {
+    color: #ffffff;
+}
+
+/* Special color for Geo-Stripe template */
+.business-card.geo-stripe .social-links a {
+    color: #f1f3f5;
+}
+.business-card.geo-stripe .social-links a:hover {
+    color: #ffffff;
+}
+
+
+/* Footer */
+.preview-footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 20px 0 10px 0; 
+    text-align: center;
+    border-top: 1px solid #ddd;
+    color: black;
+    font-size: 0.8rem;
+}
+
+.preview-footer p {
+    margin: 0 0 10px 0;
+}
+
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    font-size: 1.2rem;
+}
+
+.footer-social-links a {
+    color: black;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.footer-social-links a:hover {
+    color: black;
+    transform: translateY(-2px);
+}

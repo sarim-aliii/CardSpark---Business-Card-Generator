@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.resizer {
+  width: 5px;
+  background-color: #d1d5db;
+  cursor: col-resize; /* Indicates it can be resized horizontally */
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.resizer:hover {
+  background-color: #007bff;
+}
