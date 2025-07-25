@@ -127,39 +127,40 @@ export default function EditorPage() {
         }
         setIsLogoLoading(true);
 
-
         const apiKey = import.meta.env.VITE_STABILITY_API_KEY;
         const prompt = `A minimalist flat vector logo for a company named '${cardData.company}'. Clean background, professional, corporate branding, high quality.`;
 
+
+        const formData = new FormData();
+        formData.append('prompt', prompt);
+        formData.append('output_format', 'png');
+        formData.append('aspect_ratio', '1:1');
+
         try {
-            const response = await fetch("https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image", {
+            const response = await fetch("https://api.stability.ai/v2beta/stable-image/generate/core", {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Accept': 'image/*' 
                 },
-                body: JSON.stringify({
-                    text_prompts: [{ text: prompt }],
-                    cfg_scale: 7,
-                    height: 512,
-                    width: 512,
-                    steps: 30,
-                    samples: 1,
-                }),
+                body: formData,
             });
 
             if (!response.ok) {
-                throw new Error(`Logo generation failed: ${response.statusText}`);
+                const errorText = await response.text();
+                throw new Error(`Logo generation failed: ${response.statusText} - ${errorText}`);
             }
 
-            const data = await response.json();
-            const base64Image = data.artifacts[0].base64;
-            const logoDataUrl = `data:image/png;base64,${base64Image}`;
+            const imageBlob = await response.blob();
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const logoDataUrl = reader.result;
+                const newCardData = { ...cardData, logo: logoDataUrl };
+                setCardData(newCardData);
+                localStorage.setItem('savedCardData', JSON.stringify(newCardData));
+            };
+            reader.readAsDataURL(imageBlob);
 
-            const newCardData = { ...cardData, logo: logoDataUrl };
-            setCardData(newCardData);
-            localStorage.setItem('savedCardData', JSON.stringify(newCardData));
         } 
         catch (error) {
             console.error("Error generating logo:", error);
